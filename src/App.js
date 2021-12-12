@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { Box } from 'theme-ui';
+import Sidebar from './components/Sidebar/Sidebar';
+import Header from './components/Header/Header';
+import Explore from './pages/Explore/Explore';
+import sx from './theme/AppStyle';
+import { Route, Routes } from 'react-router-dom';
+import './App.css'
+import BookStore from './pages/BookStore/BookStore';
+import MyAccount from './pages/MyAccount/MyAccount';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box sx={sx.app}>
+      <Sidebar />
+      <Box sx={sx.main}>
+        <Header />
+        <Box sx={sx.view}>
+          <Routes>
+            <Route path="/" element={<Explore />} />
+            <Route path="/book" element={<BookStore />} />
+            <Route path="/account" element={<MyAccount />} />
+          </Routes>
+        </Box>
+      </Box>
+    </Box>
   );
 }
 
