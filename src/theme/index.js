@@ -7,5 +7,6 @@ export const Color = {
     boxBackground: '#f0f0f5',
     navButton: '#e3e3e3',
     greyText: '#606060',
-    thirdText: '#1d1e1f'
+    thirdText: '#1d1e1f',
+    redText: '#de2454'
 }

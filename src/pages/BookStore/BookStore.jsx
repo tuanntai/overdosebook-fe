@@ -1,14 +1,23 @@
-import React from "react";
-import { useRoutes } from "react-router-dom";
-import { FilterCategory } from "../../components/Filter/FilterCategory";
-import { categories } from "./constants";
-function BookStore() {
-  const { path, url } = useRoutes();
+import React, { useState } from "react";
+import { SVGIcon } from "../../components/SVGIcon/SVGIcon";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import { Box } from "theme-ui";
+import sx from "./sx";
+import ExploreBookListContainer from "../../containers/ExploreBookListContainer/ExploreBookListContainer";
+
+const BookStore = () => {
+  const [input, setInput] = useState();
   return (
-    <>
-      <FilterCategory categories={categories} rootUrl={url} />
-    </>
+    <Box sx={sx.wrapper}>
+      <SearchBar
+        inputText={input}
+        setSearchKey={setInput}
+        placeholder={"What you need ?"}
+        icon={<SVGIcon name="circle" style={sx.icon} />}
+      />
+      <ExploreBookListContainer />
+    </Box>
   );
-}
+};
 
 export default BookStore;
