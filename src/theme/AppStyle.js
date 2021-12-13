@@ -7,7 +7,10 @@ const sx = {
         justifyContent: 'flex-start',
         fontFamily: 'Inter',
         paddingTop: 0,
-        paddingBottom: 0
+        paddingBottom: 0,
+        ':-webkit-scrollbar': {
+            width: '0'
+        }
     },
     main: {
         width: 'calc(100% - 179px)',
@@ -22,7 +25,7 @@ const sx = {
         left: 0,
         width: '100%',
         minHeight: 'calc(100% - 45px)',
-        height:'calc(100% - 45px)',
+        height: 'calc(100% - 45px)',
         backgroundColor: Color.mainBackground
     }
 }

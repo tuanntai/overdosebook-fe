@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css'
 import BookStore from './pages/BookStore/BookStore';
 import MyAccount from './pages/MyAccount/MyAccount';
+import BookDetail from './pages/BookStore/components/BookDetail';
 
 const App = () => {
   return (
@@ -17,7 +18,10 @@ const App = () => {
         <Box sx={sx.view}>
           <Routes>
             <Route path="/" element={<Explore />} />
-            <Route path="/book" element={<BookStore />} />
+            <Route path="/book" element={<BookStore />}>
+              <Route index element={<BookStore />} />
+              <Route path=":id" element={<BookDetail />} />
+            </Route>
             <Route path="/account" element={<MyAccount />} />
           </Routes>
         </Box>
