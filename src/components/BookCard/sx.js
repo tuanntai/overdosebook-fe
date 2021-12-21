@@ -9,6 +9,7 @@ const sx = {
         cursor: 'pointer',
         display: 'flex',
         flexDirection: 'column',
+        position: 'relative'
     },
     imageBox: {
         height: '270px',
@@ -31,7 +32,7 @@ const sx = {
         lineHeight: 1.25,
         color: Color.text,
         display: '-webkit-box',
-        fontWeight:700,
+        fontWeight: 700,
         WebkitLineClamp: 3,
         overflow: 'hidden',
         '-webkit-box-orient': 'vertical'
@@ -41,7 +42,10 @@ const sx = {
         color: Color.secondText
     },
     buttonBox: {
-        paddingTop: '20px'
+        position: 'absolute',
+        bottom: '10px',
+        width: '100%'
+
     },
     button: {
         width: '100%',
@@ -57,7 +61,7 @@ const sx = {
     },
     extraPrice: {
         color: Color.redText,
-        fontSize: '14px', fontWeight:600,
+        fontSize: '14px', fontWeight: 600,
     },
     cart: {
         width: '20px', marginRight: '5px'

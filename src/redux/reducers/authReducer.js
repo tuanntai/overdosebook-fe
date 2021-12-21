@@ -1,29 +1,36 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createSelector } from "reselect";
+import { postLogin } from "../actions/auth/auth";
 const initialState = {
     token: '',
-    nonce: '',
     isAuthorized: false,
-    errors: {},
+    errors: '',
     loading: false,
 };
 const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        logoutSuccess(state) {
-            state.token = null;
-        },
-        setAuthorized: (state, action) => {
-            state.isAuthorized = action.payload
-        },
-        setToken: (state, action) => {
-            state.token = action.payload
-        },
-        setNonce: (state, action) => {
-            state.nonce = action.payload
+        logout(state) {
+            state.token = '';
+            state.isAuthorized = false
         }
     },
+    extraReducers: builder => {
+        builder
+            .addCase(postLogin.pending, (state) => {
+                state.loading = true
+            })
+            .addCase(postLogin.fulfilled, (state, action) => {
+                state.loading = false
+                state.token = action.payload.accessToken
+                state.isAuthorized = true
+            })
+            .addCase(postLogin.rejected, (state, action) => {
+                state.loading = false
+                state.errors = action.payload
+            })
+    }
 
 })
 const selectSelf = (state) => state.auth;
@@ -32,21 +39,15 @@ const isAuthorizedSelector = createSelector(
     (state) => state.isAuthorized
 )
 
-const getNonceSelector = createSelector(
-    selectSelf,
-    (state) => state.nonce
-)
-
 const getTokenSelector = createSelector(
     selectSelf,
     (state) => state.token
 )
 
 export const authSelectors = {
-    getNonceSelector,
     getTokenSelector,
     isAuthorizedSelector
 }
 
-export const { logoutSuccess, setAuthorized, setToken, setNonce } = authSlice.actions;
+export const { logout } = authSlice.actions;
 export default authSlice.reducer;

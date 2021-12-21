@@ -8,5 +8,6 @@ export const Color = {
     navButton: '#e3e3e3',
     greyText: '#606060',
     thirdText: '#1d1e1f',
-    redText: '#de2454'
+    redText: '#de2454',
+    blueButton: '#1d6ef1'
 }
