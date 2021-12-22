@@ -2,10 +2,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Box } from "theme-ui";
 import BookCardList from "../../components/BookCardList/BookCardList";
-import { EXPLORE_BOOK_LIST } from "./data";
+import { useAppSelector } from "../../redux/hook";
+import { bookSelectors } from "../../redux/reducers/book/bookReducer";
 import sx from "./sx";
 
 const ExploreBookListContainer = () => {
+  const bookList = useAppSelector(bookSelectors.bookListSelector);
   const navigate = useNavigate();
   const handleItemClick = (id) => {
     navigate(`${id}`);
@@ -14,10 +16,9 @@ const ExploreBookListContainer = () => {
     <Box sx={sx.wrapper}>
       <Box sx={sx.title}>All Books</Box>
       <Box sx={sx.result}>
-        {EXPLORE_BOOK_LIST.length}{" "}
-        {EXPLORE_BOOK_LIST.length > 1 ? `results` : `result`}
+        {bookList.length} {bookList.length > 1 ? `results` : `result`}
       </Box>
-      <BookCardList list={EXPLORE_BOOK_LIST} onItemClick={handleItemClick} />
+      <BookCardList list={bookList} onItemClick={handleItemClick} />
     </Box>
   );
 };

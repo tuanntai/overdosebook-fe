@@ -21,10 +21,10 @@ const sx = {
         height: '100%',
         width: '100%',
     },
-    navLink: {
+    navLink: (accessToken, navItem) => ({
         color: Color.greyText,
         padding: '10px 14px',
-        display: 'flex',
+        display: (!accessToken && navItem === 'My Account') ? 'none' : 'flex',
         alignItems: 'center',
         textDecoration: 'none',
         transition: '.3s all',
@@ -35,7 +35,7 @@ const sx = {
             background: Color.navButton,
             color: Color.thirdText
         }
-    },
+    }),
 
     drawerNavLinkIcon: {
         width: '13px',

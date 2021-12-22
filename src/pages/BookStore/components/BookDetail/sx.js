@@ -31,8 +31,9 @@ const sx = {
         display: 'block',
         mx: 'auto',
         transition: 'transform 0.5s',
+        p: 0,
         ':hover': {
-            transform: 'scale(1.1)'
+            transform: 'scale(1.2)'
         }
     },
     nameBox: {
@@ -42,15 +43,18 @@ const sx = {
     },
     newBook: {
         width: '50px',
-
     },
     title: {
-        fontSize: '28px',
+        fontSize: '20px',
         fontWeight: 500,
-        color: Color.text
+        color: Color.text,
+        display: "-webkit-box",
+        WebkitLineClamp: 3,
+        overflow: "hidden",
+        "-webkit-box-orient": "vertical",
     },
     author: {
-        fontSize: '18px',
+        fontSize: '14px',
         fontWeight: 1.2,
         color: Color.secondText
     },
@@ -77,6 +81,9 @@ const sx = {
         fontWeight: 1.5,
         color: Color.secondText,
         pt: '10px'
+    },
+    leftName: {
+        width: '80%'
     }
 }
 

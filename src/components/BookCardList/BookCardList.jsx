@@ -8,11 +8,11 @@ function BookCardList({ list, onItemClick }) {
     <Box sx={sx.wrapper}>
       {list &&
         list.map((item) => (
-          <Box sx={sx.item}>
+          <Box sx={sx.item} key={item.id}>
             <BookCard
-              name={item.name}
+              name={item.title}
               id={item.id}
-              image={item.image}
+              image={item.imageUrl}
               price={item.price}
               discountPercent={item.discountPercent}
               author={item.author}

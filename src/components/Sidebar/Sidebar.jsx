@@ -6,11 +6,13 @@ import Logo from "../../assets/img/logo.png";
 import { NavLink } from "react-router-dom";
 import { SVGIcon } from "../SVGIcon/SVGIcon";
 import { sidebarPageOptions, socialLinkOptions } from "./constants";
-import { useAppDispatch } from "../../redux/hook";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { setCurrentPage } from "../../redux/reducers/navigateReducer";
+import { authSelectors } from "../../redux/reducers/authReducer";
 
 const Sidebar = () => {
   const dispatch = useAppDispatch();
+  const accessToken = useAppSelector(authSelectors.getTokenSelector);
 
   return (
     <Box sx={sx.wrapper}>
@@ -22,7 +24,7 @@ const Sidebar = () => {
           <NavLink
             key={item.key}
             to={item.path}
-            sx={sx.navLink}
+            sx={() => sx.navLink(accessToken, item.name)}
             onClick={() => dispatch(setCurrentPage({ currentPage: item.name }))}
           >
             <SVGIcon name={item.icon} sx={sx.drawerNavLinkIcon} />

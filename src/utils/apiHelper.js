@@ -4,7 +4,6 @@ import { handleServiceError } from "./apiError";
 export const getApi = async (path, config) => {
   try {
     const response = await axiosConfig.get(path, config);
-    console.log('here')
     return response.data;
   } catch (error) {
     return handleServiceError(error);
