@@ -8,6 +8,9 @@ import './App.css'
 import BookStore from './pages/BookStore/BookStore';
 import MyAccount from './pages/MyAccount/MyAccount';
 import BookDetail from './pages/BookStore/components/BookDetail/BookDetail';
+import CreateAccount from './pages/CreateAccount/CreateAccount';
+import OwnerBook from './pages/MyAccount/components/OwnerBook/OwnerBook';
+import Profile from './pages/MyAccount/components/Profile/Profile';
 
 const App = () => {
   return (
@@ -20,7 +23,12 @@ const App = () => {
             <Route path="/" element={<Explore />} />
             <Route path="/book" element={<BookStore />} />
             <Route path="/book/:id" element={<BookDetail />} />
-            <Route path="/account" element={<MyAccount />} />
+            <Route path="/account" element={<MyAccount />}>
+              <Route index element={<OwnerBook />} />
+              <Route path="ownerBook" element={<OwnerBook />} />
+              <Route path="profile" element={<Profile />} />
+            </Route>
+            <Route path="/account/create" element={<CreateAccount />} />
           </Routes>
         </Box>
       </Box>

@@ -5,14 +5,21 @@ import App from './App';
 import store from './redux/store';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
+import { Web3ReactProvider } from '@web3-react/core';
+
+function getLibrary(provider, connector) {
+  return new Web3ReactProvider(provider) // this will vary according to whether you use e.g. ethers or web3.js
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
+    <Web3ReactProvider getLibrary={getLibrary}>
+      <BrowserRouter>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </BrowserRouter>
+    </Web3ReactProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

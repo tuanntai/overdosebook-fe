@@ -9,5 +9,6 @@ export const Color = {
     greyText: '#606060',
     thirdText: '#1d1e1f',
     redText: '#de2454',
-    blueButton: '#1d6ef1'
+    blueButton: '#1d6ef1',
+    buttonBackground: '#d2d8d8',
 }

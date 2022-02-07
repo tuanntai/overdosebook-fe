@@ -1,5 +1,5 @@
 
-const accessToken = 'accessToken'
+const accessToken = 'id_token'
 export const getAccessToken = () => {
   return localStorage.getItem(accessToken)
 }
