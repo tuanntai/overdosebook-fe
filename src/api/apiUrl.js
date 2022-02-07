@@ -1,7 +1,9 @@
 export const USER_API_URL = {
-    getUser: 'user/',
-    getUserById: (id) => `user/${id}`,
-
+    getUser: 'users/',
+    getUserById: (id) => `users/${id}`,
+    postUser: 'users/',
+    addFund: 'users/addFund',
+    getBookByUserId: (userId) => `users/getBookByUserId/${userId}`
 }
 
 export const AUTH_API_URL = {
@@ -11,4 +13,7 @@ export const AUTH_API_URL = {
 export const BOOK_API_URL = {
     getBookById: (id) => `book/${id}`,
     getBookList: 'book/getList',
+    getAllBooks: (page) => `book/allbooks/page/${page}`,
+    buyBooks: () => `book/buybooks`
 }
+

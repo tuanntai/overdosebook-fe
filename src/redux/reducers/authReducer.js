@@ -1,11 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createSelector } from "reselect";
-import { postLogin } from "../actions/auth/auth";
+import { postLogin, postUser } from "../actions/auth/auth";
 const initialState = {
     token: '',
     isAuthorized: false,
     errors: '',
     loading: false,
+    nonce: '',
+    walletAddress: '',
+    userId: 0,
+    userInfo: {}
 };
 const authSlice = createSlice({
     name: 'auth',
@@ -14,7 +18,7 @@ const authSlice = createSlice({
         logout(state) {
             state.token = '';
             state.isAuthorized = false
-        }
+        },
     },
     extraReducers: builder => {
         builder
@@ -24,12 +28,23 @@ const authSlice = createSlice({
             .addCase(postLogin.fulfilled, (state, action) => {
                 state.loading = false
                 state.token = action.payload.accessToken
+                state.userId = action.payload.userId
                 state.isAuthorized = true
             })
             .addCase(postLogin.rejected, (state, action) => {
                 state.loading = false
                 state.errors = action.payload
             })
+        builder.addCase(postUser.pending, (state) => {
+            state.loading = true
+        }).addCase(postUser.fulfilled, (state, action) => {
+            state.loading = false
+            state.userInfo = action.payload
+        }).addCase(postUser.rejected, (state, action) => {
+            state.loading = false
+            state.errors = action.payload
+        })
+
     }
 
 })
@@ -44,9 +59,15 @@ const getTokenSelector = createSelector(
     (state) => state.token
 )
 
+const userIdSelector = createSelector(
+    selectSelf,
+    (state) => state.userId
+)
+
+
 export const authSelectors = {
     getTokenSelector,
-    isAuthorizedSelector
+    isAuthorizedSelector, userIdSelector
 }
 
 export const { logout } = authSlice.actions;

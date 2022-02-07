@@ -6,17 +6,14 @@ const axiosConfig = axios.create({
     timeout: 5000,
     headers: {
         "Content-Type": "application/json",
-        'Accept': 'application/json',
+        Accept: "application/json",
     },
 });
 axiosConfig.interceptors.request.use(
     function (config) {
         const accessToken = getAccessToken();
-        if (accessToken) {
-            config.headers = config.headers ? config.headers : {}
-            config.headers['Authorization'] = `Bearer ${accessToken}`
-        }
-        return config
+        config.headers["Authorization"] = `Bearer ${accessToken}`;
+        return config;
     },
     function (error) {
         return Promise.reject(error);

@@ -14,6 +14,6 @@ const navigateSlice = createSlice({
     }
 })
 
-const selectSelf = (state) => state.navigate
+// const selectSelf = (state) => state.navigate
 export const { setCurrentPage } = navigateSlice.actions
 export default navigateSlice.reducer

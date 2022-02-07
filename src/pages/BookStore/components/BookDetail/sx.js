@@ -24,6 +24,9 @@ const sx = {
         border: `1px solid ${Color.border}`,
         borderRadius: '5px',
         p: '10px', background: Color.mainBackground,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between'
     },
     image: {
         height: '100%',
@@ -84,6 +87,39 @@ const sx = {
     },
     leftName: {
         width: '80%'
+    }
+    ,
+    optionBox: {
+        display: 'flex',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        gap: '20px',
+        height: '50px',
+        'img': {
+            height: '100%',
+            width: 'auto',
+            cursor: 'pointer'
+        },
+        'div': {
+            border: `2px solid ${Color.blueButton}`,
+            p: '7.5px 20px',
+            borderRadius: 9999,
+            color: '#ffffff',
+            background: Color.blueButton
+        },
+    },
+    option: {
+        px: '20px'
+    },
+    buyButton: {
+        display: 'flex',
+        justifyContent: 'center',
+        height: '40px',
+        alignItems: 'center',
+        cursor: 'pointer',
+        borderRadius: 9999,
+        color: '#ffffff',
+        background: Color.blueButton
     }
 }
 

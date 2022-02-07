@@ -12,7 +12,7 @@ const sx = {
         borderRight: `1px solid ${Color.border}`,
         display: 'flex',
         flexDirection: 'column',
-        backgroundColor: Color.whiteBackground
+        backgroundColor: Color.mainBackground
     },
     logoBox: {
         paddingBottom: '15px'
